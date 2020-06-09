@@ -93,6 +93,13 @@ pipeline {
              
                 sh "/bin/cp -f $WORKSPACE/OIJenkinsChangeEventEnd.sh.template $WORKSPACE/OIJenkinsChangeEventEnd.sh"
                 sh "sed -i \"s/BUILD_NUMBER/$BUILD_NUMBER/g\" $WORKSPACE/OIJenkinsChangeEventEnd.sh"
+             
+                if ( buildOK ) {
+                    sh "sed -i \"s/STATUS/PASS/g\" $WORKSPACE/OIJenkinsChangeEventEnd.sh"
+                } else {
+                    sh "sed -i \"s/STATUS/FAIL/g\" $WORKSPACE/OIJenkinsChangeEventEnd.sh"
+                }
+             
                 sh "chmod +x $WORKSPACE/OIJenkinsChangeEventEnd.sh"
                 sh "$WORKSPACE/OIJenkinsChangeEventEnd.sh"
              
