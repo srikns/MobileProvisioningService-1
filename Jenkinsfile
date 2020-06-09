@@ -8,7 +8,7 @@ pipeline {
       stage('Validate-Feature Flag') {
          steps{
            script {
-            def buildOK = true
+
             echo "Validating Feature Flag"
             SLEEP_TIME = Math.abs( new Random().nextInt() % (13 - 8) ) + 8;
             sh "sleep $SLEEP_TIME"
