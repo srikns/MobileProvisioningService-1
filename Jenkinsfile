@@ -1,5 +1,6 @@
 //This Jenkinsfile is tightly integrated with DevOps Demo in Open Access. 
 //Pls contact Srikant.noorani@broadcom.com before making any change to this
+def buildOK = true
 pipeline {
  agent any
  stages {
@@ -113,7 +114,7 @@ pipeline {
                publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: false, reportDir: "${env.BUILD_NUMBER}/", reportFiles: 'chart-output.html', reportName: 'CA APM Comparison Reports', reportTitles: ''])
                
                if ( buildOK ) {
-                   currrentBuild.result = "SUCCESS"
+                   currentBuild.result = "SUCCESS"
                    echo "Build is marked as Success"
                } else {
                    currentBuild.result = "FAILURE"
