@@ -38,19 +38,19 @@ pipeline {
              
              try {
               echo "ensure any prev running slow UC is shut. ignore any error due to this"
-              ////sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
+              sh "kubectl delete -f selenium-standalone-slow.yml -n selenium"
              } catch (err) {
                 //ignore
              }
-             ////sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
-             sleep(time:10,unit:"SECONDS")
+             sh "kubectl create -f selenium-standalone-slow.yml -n selenium"
+             sleep(time:5,unit:"SECONDS")
              
             loadGeneratorName = env.STAGE_NAME;
             loadGeneratorStartTime = System.currentTimeMillis();
             blazeMeterTest credentialsId:'aa2b41eb-23f3-4045-afe5-374a0b28d202',
             serverUrl:'https://blazemeter.ca.com',
             //testId:'6518001',
-            testId: '8624876',
+            testId: '8556570',
             notes:'',
             sessionProperties:'',
             jtlPath:'',
